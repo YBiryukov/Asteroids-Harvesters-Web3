@@ -1,0 +1,22 @@
+{
+  "name": "asteroids-harvesters-web3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YBiryukov/Asteroids-Harvesters-Web3.git"
+  },
+  "author": "Yegor Biryukov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YBiryukov/Asteroids-Harvesters-Web3/issues"
+  },
+  "homepage": "https://github.com/YBiryukov/Asteroids-Harvesters-Web3#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}

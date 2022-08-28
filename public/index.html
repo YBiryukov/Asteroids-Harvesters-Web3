@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title> Игра </title>
+  <style>
+    html, body {
+      width : 95%;
+      height: 95%;
+    }
+    #header {
+      font-size : 18px;
+      text-align: center;
+    }
+    #container {
+      position : relative;
+      width    : 800px;
+      height   : 600px;
+    }
+    #staticCanvas, #dynamicCanvas {
+      position : absolute;
+      top      : 0px;
+      left     : 0px;
+      border   : 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <p id="header"> В игре <b>нет загружаемых изображений</b>, все элементы графики созданы и отрисованы при помощи <b>HTML5 Canvas</b> </p>
+  <div id="container">
+    <canvas id="staticCanvas" width="800" height="600"> </canvas>
+    <canvas id="dynamicCanvas" width="800" height="600" onmousemove="mouseMoved(event);" onmousedown="mouseDown(event);" oncontextmenu="return false;"> Ваш браузер не поддерживает элемент HTML5 Canvas </canvas>
+  </div>
+  <p> - собирайте астероиды подходящие по цвету к грузовой платформе корабля </p>
+  <p> - уклоняйтесь или уничтожайте астероиды не подходящие по цвету к грузовой платформе корабля </p>
+  <p> - движение: мышь </p>
+  <p> - выстрел из левой лазерной пушки: левая кнопка мыши </p>
+  <p> - выстрел из правой лазерной пушки: правая кнопка мыши </p>
+  <p> - соберите три астероида одного цвета для увеличения счета </p>
+  <p> - счет отображается в центре грузовой платформы корабля </p>
+  <p> - удачи! </p>
+</body>
+<script src="/game.js"></script>
+</html>

@@ -1,18 +1,18 @@
 'use strict';
 
 const statCanvas = document.getElementById('staticCanvas');
-const statCtx    = statCanvas.getContext("2d");
+const statCtx    = statCanvas.getContext('2d');
 const statWidth  = statCanvas.width;
 const statHeight = statCanvas.height;
 const dynCanvas  = document.getElementById('dynamicCanvas');
-const dynCtx     = dynCanvas.getContext("2d");
+const dynCtx     = dynCanvas.getContext('2d');
 const dynWidth   = dynCanvas.width;
 const dynHeight  = dynCanvas.height;
 
 // display alert if size of staticCanvas not equal to size of dynamicCanvas
-if (statWidth != dynWidth || statHeight != dynHeight) alert("Different width/height of canvases!    statWidth = " + statWidth + ", dynWidth = " + dynWidth + ";    statHeight = " + statHeight + ", dynHeight = " + dynHeight);
+if (statWidth != dynWidth || statHeight != dynHeight) alert(`Different width/height of canvases! statWidth = ${statWidth}, dynWidth = ${dynWidth}; statHeight = ${statHeight}, dynHeight = ${dynHeight}`);
 
-const colors           = ["#a30404", "#63534b", "#1e4701"];
+const colors           = ['#a30404', '#63534b', '#1e4701'];
 const starsSize        = 1;
 const asteroidsSize    = 12;
 const starsSpeed       = 2;
@@ -33,42 +33,42 @@ let projectiles      = [];
 let score            = 0;
 let gameOver         = false;
 let playerShip = {
-  "size"                  : {"x" : 125, "y" : 50},
-  "weaponSize"            : {"x" : 25,  "y" : 50},
-  "weaponXCenter"         : 12,
-  "projectileSize"        : {"x" : 1,   "y" : 12},
-  "projectileColor"       : "#60d60c",
-  "platformSize"          : {"x" : 75,  "y" : 25},
-  "platformCargoUnitSize" : {"x" : 25,  "y" : 25},
-  "platformCargoSpace"    : [false, false, false],
-  "platformColor"         : Math.floor(Math.random() * 3)
+  'size'                  : {'x' : 125, 'y' : 50},
+  'weaponSize'            : {'x' : 25,  'y' : 50},
+  'weaponXCenter'         : 12,
+  'projectileSize'        : {'x' : 1,   'y' : 12},
+  'projectileColor'       : '#60d60c',
+  'platformSize'          : {'x' : 75,  'y' : 25},
+  'platformCargoUnitSize' : {'x' : 25,  'y' : 25},
+  'platformCargoSpace'    : [false, false, false],
+  'platformColor'         : Math.floor(Math.random() * 3)
 };
 
 // set playerShip starting position
-playerShip.currentPosition = {"x" : Math.floor(dynWidth * 0.5 - playerShip.size.x * 0.5), "y" : dynHeight - playerShip.size.y};
+playerShip.currentPosition = {'x' : Math.floor(dynWidth * 0.5 - playerShip.size.x * 0.5), 'y' : dynHeight - playerShip.size.y};
 playerShip.platformColor   = changePlayerShipPlatformColor(playerShip.platformColor);
 
 // fill arrays of stars
 for (let i = 0; i < numOfYellowStars; i++) {
-  starsYellow.push({"x" : Math.floor(Math.random() * dynWidth), "y" : Math.floor(Math.random() * dynHeight)});
+  starsYellow.push({'x' : Math.floor(Math.random() * dynWidth), 'y' : Math.floor(Math.random() * dynHeight)});
 };
 for (let i = 0; i < numOfWhiteStars; i++) {
-  starsWhite.push({"x" : Math.floor(Math.random() * dynWidth), "y" : Math.floor(Math.random() * dynHeight)});
+  starsWhite.push({'x' : Math.floor(Math.random() * dynWidth), 'y' : Math.floor(Math.random() * dynHeight)});
 };
 
 // fill arrays of asteroids
 for (let i = 0; i < numOfAsteroids1; i++) {
-  asteroids1.push({"x" : Math.floor(Math.random() * dynWidth), "y" : Math.floor(Math.random() * (dynHeight * 0.5)), "color" : colors[0]});
+  asteroids1.push({'x' : Math.floor(Math.random() * dynWidth), 'y' : Math.floor(Math.random() * (dynHeight * 0.5)), 'color' : colors[0]});
 };
 for (let i = 0; i < numOfAsteroids2; i++) {
-  asteroids2.push({"x" : Math.floor(Math.random() * dynWidth), "y" : Math.floor(Math.random() * (dynHeight * 0.5)), "color" : colors[1]});
+  asteroids2.push({'x' : Math.floor(Math.random() * dynWidth), 'y' : Math.floor(Math.random() * (dynHeight * 0.5)), 'color' : colors[1]});
 };
 for (let i = 0; i < numOfAsteroids3; i++) {
-  asteroids3.push({"x" : Math.floor(Math.random() * dynWidth), "y" : Math.floor(Math.random() * (dynHeight * 0.5)), "color" : colors[2]});
+  asteroids3.push({'x' : Math.floor(Math.random() * dynWidth), 'y' : Math.floor(Math.random() * (dynHeight * 0.5)), 'color' : colors[2]});
 };
 
 // draw staticCanvas background
-statCtx.fillStyle = "#000d23";
+statCtx.fillStyle = '#000d23';
 statCtx.fillRect(0, 0, statWidth, statHeight);
 
 animFrame()
@@ -77,8 +77,8 @@ function gameLoop() {
   dynCtx.clearRect(0, 0, dynWidth, dynHeight);
   moveStarsAndAsteroids(starsYellow, starsSpeed);
   moveStarsAndAsteroids(starsWhite, starsSpeed);
-  drawStarsAndAsteroids(starsYellow, "yellow", starsSize);
-  drawStarsAndAsteroids(starsWhite, "white", starsSize);
+  drawStarsAndAsteroids(starsYellow, 'yellow', starsSize);
+  drawStarsAndAsteroids(starsWhite, 'white', starsSize);
   moveProjectiles();
   asteroidsProjectilesCollisionDetection();
   drawProjectiles();
@@ -97,9 +97,9 @@ function animFrame(){
     requestAnimationFrame(animFrame, dynCanvas);
     gameLoop();
   } else {
-    dynCtx.font = "120px Comic Sans MS";
-    dynCtx.fillStyle = "red";
-    dynCtx.fillText("Game Over", Math.floor(dynWidth * 0.5), Math.floor(dynHeight * 0.5));
+    dynCtx.font = '120px Comic Sans MS';
+    dynCtx.fillStyle = 'red';
+    dynCtx.fillText('Game Over', Math.floor(dynWidth * 0.5), Math.floor(dynHeight * 0.5));
   };
 };
 
@@ -123,14 +123,14 @@ function drawStarsAndAsteroids(starsOrAsteroids, color, size) {
 };
 
 function drawPlayerShip() {
-  dynCtx.fillStyle = "#a8a8a8";
+  dynCtx.fillStyle = '#a8a8a8';
   dynCtx.fillRect(playerShip.currentPosition.x, playerShip.currentPosition.y, playerShip.weaponSize.x, playerShip.weaponSize.y);
   dynCtx.fillRect(playerShip.currentPosition.x + playerShip.size.x - playerShip.weaponSize.x, playerShip.currentPosition.y, playerShip.weaponSize.x, playerShip.weaponSize.y);
   dynCtx.fillStyle = playerShip.platformColor;
   dynCtx.fillRect(playerShip.currentPosition.x + playerShip.weaponSize.x, playerShip.currentPosition.y + playerShip.platformSize.y, playerShip.platformSize.x, playerShip.platformSize.y);
-  dynCtx.font = "15px Comic Sans MS";
-  dynCtx.fillStyle = "white";
-  dynCtx.textAlign = "center";
+  dynCtx.font = '15px Comic Sans MS';
+  dynCtx.fillStyle = 'white';
+  dynCtx.textAlign = 'center';
   dynCtx.fillText(score, playerShip.currentPosition.x + Math.floor(playerShip.size.x * 0.5), playerShip.currentPosition.y + playerShip.size.y - 10);
   dynCtx.fillStyle = playerShip.platformColor;
   for(let i = 0; i < playerShip.platformCargoSpace.length; i++) {
@@ -155,11 +155,11 @@ function mouseDown(event) {
 };
 
 function fireLeftWeapon() {
-  projectiles.push({"x" : playerShip.currentPosition.x + playerShip.weaponXCenter, "y" : playerShip.currentPosition.y});
+  projectiles.push({'x' : playerShip.currentPosition.x + playerShip.weaponXCenter, 'y' : playerShip.currentPosition.y});
 };
 
 function fireRightWeapon() {
-  projectiles.push({"x" : playerShip.currentPosition.x + playerShip.size.x - playerShip.weaponXCenter, "y" : playerShip.currentPosition.y});
+  projectiles.push({'x' : playerShip.currentPosition.x + playerShip.size.x - playerShip.weaponXCenter, 'y' : playerShip.currentPosition.y});
 };
 
 function moveProjectiles() {

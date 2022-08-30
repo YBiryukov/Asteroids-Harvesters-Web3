@@ -1,0 +1,22 @@
+html, body {
+  width : 95%;
+  height: 95%;
+}
+
+#header {
+  font-size : 18px;
+  text-align: center;
+}
+
+#container {
+  position : relative;
+  width    : 800px;
+  height   : 600px;
+}
+
+#staticCanvas, #dynamicCanvas {
+  position : absolute;
+  top      : 0px;
+  left     : 0px;
+  border   : 1px solid black;
+}
